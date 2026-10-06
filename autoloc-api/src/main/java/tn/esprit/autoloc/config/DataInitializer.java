@@ -3,6 +3,7 @@ package tn.esprit.autoloc.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.autoloc.domain.*;
 import tn.esprit.autoloc.repository.IVehiculeRepository;
 import tn.esprit.autoloc.service.IClientService;
@@ -25,6 +26,7 @@ public class DataInitializer implements CommandLineRunner {
     private final IContratService contratService;
 
     @Override
+    @Transactional
     public void run(String... args) {
         if (vehiculeRepository.count() == 0) {
             insererVehiculesDeDemo();

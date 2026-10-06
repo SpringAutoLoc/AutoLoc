@@ -34,7 +34,8 @@ public class Contrat {
     @JoinColumn(name = "id_reservation")
     private Reservation reservation;
 
-    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Paiement> paiements = new ArrayList<>();
 
     public Contrat(Long idContrat, LocalDate dateSignature, BigDecimal montantTotal, boolean valide) {
